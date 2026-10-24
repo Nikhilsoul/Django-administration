@@ -15,7 +15,7 @@
     <a href="{% url 'login' %}">Login</a>&emsp;
     <a href="{% url 'register' %}">Register</a>
     {% else %}
-    <a href="" style="float: right; margin-right: 170px;">Logout</a>
+    <a href="{% url 'logout' %}" style="float: right; margin-right: 170px;">Logout</a>
     {% endif %}
     <h2>Employee Records </h2>
     <a href="{% url 'add_employee' %}" style="float: right; margin-right: 170px;">Add Employee</a>

@@ -20,6 +20,8 @@ def register(request):
     return render(request, 'register.html', context)
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -32,3 +34,7 @@ def login(request):
         'form' : form
     }
     return render(request, 'login.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
