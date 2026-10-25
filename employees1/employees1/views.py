@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from employeesApp.models import Employee
 from .forms import EmployeeForm
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 def employee_details(request, id):
     employee = get_object_or_404(Employee, id=id)
@@ -10,7 +11,7 @@ def employee_details(request, id):
     }
     return render(request, 'employee_details.html', context)
 
-
+@login_required
 def add_employee(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST, request.FILES)
